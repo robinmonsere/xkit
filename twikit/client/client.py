@@ -92,6 +92,8 @@ class Client:
         user_agent: str | None = None,
         **kwargs
     ) -> None:
+        print("test")
+        return
         if 'proxies' in kwargs:
             message = (
                 "The 'proxies' argument is now deprecated. Use 'proxy' "

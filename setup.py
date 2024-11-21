@@ -9,7 +9,7 @@ with open('./twikit/__init__.py') as f:
     version = re.findall(r"__version__ = '(.+)'", f.read())[0]
 
 setup(
-    name='twikit',
+    name='xkit',
     version=version,
     install_requires=[
         'httpx[socks]',

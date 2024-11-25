@@ -241,7 +241,7 @@ class Client:
             #my own
             'Sec-ch-ua': '"Brave";v="131", "Chromium";v="131", "Not_A Brand";v="24"',
             'Origin': 'https://x.com',
-            'X-client-transaction-id': 'HbITkM49ffM8vHCtvbe5ojrv5Ds+Cmu/JaeM/AQZZBibua3T4GH+6f+T5N+SUM3ne0sq7R/vGwqAfvNSGzcs97BivmWYHg',
+            'X-client-transaction-id': '9KuJY2sMOV/UfetbTUA5R9dumv+Z0YMp2q3xEw23tLnUjIRydmXe3Rll26JXXHq5xwRQAfbZ9Lm7JdzP+j1RgymzSJuP9w',
         }
 
         if self.language is not None:

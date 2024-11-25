@@ -15,9 +15,8 @@
 
 # Twikit <img height="35"  src="https://i.imgur.com/9HSdIl4.png"  valign="bottom">
 
-A Simple Twitter API Scraper
-
-You can use functions such as posting or searching for tweets without an API key using this library.
+Twikit for X  
+Only posting has been changed
 
 - [Documentation (English)](https://twikit.readthedocs.io/en/latest/twikit.html)
 
@@ -60,7 +59,7 @@ By using Twikit, you can access functionalities such as the following:
 
 ```bash
 
-pip install twikit
+pip install xkit
 
 ```
 
@@ -72,7 +71,7 @@ pip install twikit
 
 ```python
 import asyncio
-from twikit import Client
+from xkit import Client
 
 USERNAME = 'example_user'
 EMAIL = 'email@example.com'
@@ -81,12 +80,14 @@ PASSWORD = 'password0000'
 # Initialize client
 client = Client('en-US')
 
+
 async def main():
     await client.login(
-        auth_info_1=USERNAME ,
+        auth_info_1=USERNAME,
         auth_info_2=EMAIL,
         password=PASSWORD
     )
+
 
 asyncio.run(main())
 ```

@@ -1,5 +1,5 @@
 import asyncio
-from twikit import Client
+from xkit import Client
 
 AUTH_INFO_1 = '...'
 AUTH_INFO_2 = '...'

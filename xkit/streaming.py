@@ -58,7 +58,7 @@ class StreamingSession:
 
         Examples
         --------
-        >>> from twikit.streaming import Topic
+        >>> from xkit.streaming import Topic
         ...
         >>> subscribe_topics = {
         ...     Topic.tweet_engagement('1749528513'),

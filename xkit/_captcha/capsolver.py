@@ -17,7 +17,7 @@ class Capsolver(CaptchaSolver):
 
     .. code-block:: python
 
-        from twikit.twikit_async import Capsolver, Client
+        from xkit.twikit_async import Capsolver, Client
         solver = Capsolver(
             api_key='your_api_key',
             max_attempts=10

@@ -2,6 +2,10 @@
 TOKEN = 'AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA'
 
 FEATURES = {
+    'communities_web_enable_tweet_community_results_fetch': True,
+    'creator_subscriptions_quote_tweet_preview_enabled': True,
+    'rweb_tipjar_consumption_enabled': True,
+    'articles_preview_enabled': True,
     'creator_subscriptions_tweet_preview_api_enabled': True,
     'c9s_tweet_anatomy_moderator_badge_enabled': True,
     'tweetypie_unmention_optimization_enabled': True,

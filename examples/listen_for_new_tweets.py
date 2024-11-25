@@ -1,7 +1,7 @@
 import asyncio
 from typing import NoReturn
 
-from twikit import Client, Tweet
+from xkit import Client, Tweet
 
 AUTH_INFO_1 = '...'
 AUTH_INFO_2 = '...'

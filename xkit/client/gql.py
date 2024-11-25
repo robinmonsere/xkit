@@ -27,12 +27,15 @@ if TYPE_CHECKING:
 class Endpoint:
     @staticmethod
     def url(path):
-        return 'https://twitter.com/i/api/graphql/' + path
+        return 'https://x.com/i/api/graphql/' + path
 
     SEARCH_TIMELINE = url('flaR-PUMshxFWZWPNpq4zA/SearchTimeline')
     SIMILAR_POSTS = url('EToazR74i0rJyZYalfVEAQ/SimilarPosts')
     CREATE_NOTE_TWEET = url('iCUB42lIfXf9qPKctjE5rQ/CreateNoteTweet')
-    CREATE_TWEET = url('SiM_cAu83R0wnrpmKQQSEw/CreateTweet')
+
+    CREATE_TWEET = url('znq7jUAqRjmPj7IszLem5Q/CreateTweet')
+    # old twitter.com
+    #CREATE_TWEET = url('SiM_cAu83R0wnrpmKQQSEw/CreateTweet')
     CREATE_SCHEDULED_TWEET = url('LCVzRQGxOaGnOnYH01NQXg/CreateScheduledTweet')
     DELETE_TWEET = url('VaenaVgh5q5ih7kvyVjgtg/DeleteTweet')
     USER_BY_SCREEN_NAME = url('NimuplG1OB7Fd2btCLdBOw/UserByScreenName')
@@ -130,12 +133,18 @@ class GQLClient:
         **kwargs
     ):
         data = {'variables': variables, 'queryId': get_query_id(url)}
+
         if features is not None:
             data['features'] = features
         if extra_data is not None:
             data |= extra_data
         if headers is None:
             headers = self.base._base_headers
+
+        print("Data:")
+        print(data)
+        print("Headers:")
+        print(headers)
         return await self.base.post(url, json=data, headers=headers, **kwargs)
 
     async def search_timeline(

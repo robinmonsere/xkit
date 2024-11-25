@@ -92,8 +92,7 @@ class Client:
         user_agent: str | None = None,
         **kwargs
     ) -> None:
-        print("test")
-        return
+        print("test 5")
         if 'proxies' in kwargs:
             message = (
                 "The 'proxies' argument is now deprecated. Use 'proxy' "
@@ -235,8 +234,13 @@ class Client:
             'content-type': 'application/json',
             'X-Twitter-Auth-Type': 'OAuth2Session',
             'X-Twitter-Active-User': 'yes',
-            'Referer': 'https://twitter.com/',
+            'Referer': 'https://x.com/compose/post',
             'User-Agent': self._user_agent,
+
+            #my own
+            'Sec-ch-ua': '"Brave";v="131", "Chromium";v="131", "Not_A Brand";v="24"',
+            'Origin': 'https://x.com',
+            'X-client-transaction-id': 'HbITkM49ffM8vHCtvbe5ojrv5Ds+Cmu/JaeM/AQZZBibua3T4GH+6f+T5N+SUM3ne0sq7R/vGwqAfvNSGzcs97BivmWYHg',
         }
 
         if self.language is not None:
@@ -1240,6 +1244,11 @@ class Client:
             reply_to, attachment_url, community_id, share_with_followers,
             richtext_options, edit_tweet_id, limit_mode
         )
+        if not response['data']:
+            print(response)
+            return
+            #self._switch_error(response)
+
         if is_note_tweet:
             _result = response['data']['notetweet_create']['tweet_results']
         else:
@@ -4163,7 +4172,7 @@ class Client:
 
         Examples
         --------
-        >>> from twikit.streaming import Topic
+        >>> from xkit.streaming import Topic
         >>>
         >>> topics = {
         ...     Topic.tweet_engagement('1739617652'), # Stream tweet engagement
@@ -4239,3 +4248,19 @@ class Client:
     async def _get_user_state(self) -> Literal['normal', 'bounced', 'suspended']:
         response, _ = await self.v11.user_state()
         return response['userState']
+
+    def _switch_error(
+     self,
+        response: dict
+    ):
+        #todo add https://github.com/d60/twikit/pull/202/files?diff=split&w=0
+        error_map = {
+           # 186: CreateTweetDuplicate,
+           # 187: CreateTweetMaxLengthReached
+        }
+        message = response.get('errors', [])[0].get('message', '')
+        error_msg: str = message[message.index(": ")+2:message.index(". ")]
+        error_code = response.get('errors', [])[0].get('extensions', {}).get('code', '')
+        if error_code in error_map:
+            raise error_map[error_code](error_msg)
+        print(response)

@@ -1,6 +1,6 @@
 import asyncio
 
-from twikit.guest import GuestClient
+from xkit.guest import GuestClient
 
 client = GuestClient()
 

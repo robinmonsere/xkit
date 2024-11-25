@@ -10,9 +10,9 @@ sys.path.insert(0, os.path.abspath('..'))
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'twikit'
-copyright = '2024, twikit'
-author = 'twikit'
+project = 'xkit'
+copyright = '2024, xkit'
+author = 'xkit'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

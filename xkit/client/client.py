@@ -33,6 +33,8 @@ from ..errors import (
     Unauthorized,
     UserNotFound,
     UserUnavailable,
+    CreateTweetDuplicate,
+    CreateTweetMaxLengthReached,
     raise_exceptions_from_response
 )
 from ..geo import Place, _places_from_response
@@ -92,7 +94,6 @@ class Client:
         user_agent: str | None = None,
         **kwargs
     ) -> None:
-        print("test 5")
         if 'proxies' in kwargs:
             message = (
                 "The 'proxies' argument is now deprecated. Use 'proxy' "
@@ -1245,9 +1246,7 @@ class Client:
             richtext_options, edit_tweet_id, limit_mode
         )
         if not response['data']:
-            print(response)
-            return
-            #self._switch_error(response)
+            self._switch_error(response)
 
         if is_note_tweet:
             _result = response['data']['notetweet_create']['tweet_results']
@@ -4255,8 +4254,8 @@ class Client:
     ):
         #todo add https://github.com/d60/twikit/pull/202/files?diff=split&w=0
         error_map = {
-           # 186: CreateTweetDuplicate,
-           # 187: CreateTweetMaxLengthReached
+           186: CreateTweetDuplicate,
+           187: CreateTweetMaxLengthReached
         }
         message = response.get('errors', [])[0].get('message', '')
         error_msg: str = message[message.index(": ")+2:message.index(". ")]

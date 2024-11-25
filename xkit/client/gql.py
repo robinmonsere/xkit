@@ -140,11 +140,6 @@ class GQLClient:
             data |= extra_data
         if headers is None:
             headers = self.base._base_headers
-
-        print("Data:")
-        print(data)
-        print("Headers:")
-        print(headers)
         return await self.base.post(url, json=data, headers=headers, **kwargs)
 
     async def search_timeline(
